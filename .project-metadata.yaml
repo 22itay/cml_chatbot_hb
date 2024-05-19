@@ -13,7 +13,7 @@ environment_variables:
     description: >-
       Provide IP of Chroma DB
   HF_MODEL:
-    default: "mistralai/Mistral-7B-v0.1"
+    default: "yam-peleg/Hebrew-Mistral-7B"
     description: >-
       Provide HuggingFace Model you want to use
   HF_TOKEN:
@@ -24,7 +24,7 @@ environment_variables:
 
 runtimes:
   - editor: JupyterLab
-    kernel: Python 3.9
+    kernel: Python 3.10
     edition: Nvidia GPU
 
 tasks:
