@@ -39,6 +39,7 @@ chroma = chromadb.HttpClient(host=IP_ADDR, port=8000)
 
 access_token = os.environ["HF_TOKEN"]
 hugging_face_model = os.environ["HF_MODEL"]
+hugging_face_model_pdf = os.environ["HF_MODEL_PDF"]
 
 tokenizer = AutoTokenizer.from_pretrained(hugging_face_model, use_auth_token=access_token)
 
@@ -46,7 +47,7 @@ llm_model = AutoModelForCausalLM.from_pretrained(hugging_face_model, #meta-llama
                                                      load_in_4bit=True,
                                                      device_map='balanced_low_0',
                                                      torch_dtype=torch.float16,
-                                                     low_cpu_mem_usage=True,
+                                                     low_cpu_mem_usage=False,
                                                      use_auth_token=access_token
                                                     )
 max_len = 81920
