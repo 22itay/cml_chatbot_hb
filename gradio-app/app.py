@@ -39,6 +39,7 @@ chroma = chromadb.HttpClient(host=IP_ADDR, port=8000)
 
 access_token = os.environ["HF_TOKEN"]
 hugging_face_model = os.environ["HF_MODEL"]
+hugging_face_model_pdf = os.environ["HF_MODEL_PDF_PARSE"]
 
 tokenizer = AutoTokenizer.from_pretrained(hugging_face_model, use_auth_token=access_token)
 
