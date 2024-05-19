@@ -1,11 +1,11 @@
-name: CML Document Chatbot
+name: CML IL Chatbot
 description: |
   A demonstration of how CML can host LLM models using HuggingFace and Gradio
 
 author: Cloudera Inc.
 specification_version: 1.0
 prototype_version: 1.0
-date: "2023-07-21"
+date: "2024-05-20"
 
 environment_variables:
   VectorDB_IP:
@@ -13,7 +13,7 @@ environment_variables:
     description: >-
       Provide IP of Chroma DB
   HF_MODEL:
-    default: "mistralai/Mistral-7B-v0.1"
+    default: "yam-peleg/Hebrew-Mistral-7B"
     description: >-
       Provide HuggingFace Model you want to use
   HF_TOKEN:
@@ -24,7 +24,7 @@ environment_variables:
 
 runtimes:
   - editor: JupyterLab
-    kernel: Python 3.9
+    kernel: Python 3.10
     edition: Nvidia GPU
 
 tasks:
@@ -43,15 +43,15 @@ tasks:
     kernel: python3
     cpu: 2
     memory: 16
-  - type: run_session
-    name: Validate GPU Capability
-    script: session-resource-validation/check_gpu_capability.py
-    short_summary: Check for GPU capability. 
-    long_summary: Check GPU device supports the CUDA capabilities required.
-    kernel: python3
-    cpu: 2
-    memory: 16
-    gpu: 1
+  # - type: run_session
+  #   name: Validate GPU Capability
+  #   script: session-resource-validation/check_gpu_capability.py
+  #   short_summary: Check for GPU capability. 
+  #   long_summary: Check GPU device supports the CUDA capabilities required.
+  #   kernel: python3
+  #   cpu: 2
+  #   memory: 16
+  #   gpu: 1
   
   - type: run_session
     name: Install Dependencies
