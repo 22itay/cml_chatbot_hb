@@ -49,7 +49,7 @@ llm_model = AutoModelForCausalLM.from_pretrained(hugging_face_model, #meta-llama
                                                      low_cpu_mem_usage=True,
                                                      use_auth_token=access_token
                                                     )
-max_len = 8192
+max_len = 81920
 llm_task = "text-generation"
 T = 0.1
 
@@ -78,7 +78,9 @@ def upload_file(files):
 
 
 #Embedding function which will be used to convert the text to Vector Embeddings
-embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2") #TODO: Find replacement
+#embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2") #TODO: Find replacement
+embedding_function = SentenceTransformerEmbeddings(model_name="paraphrase-multilingual-MiniLM-L12-v2")
+
 
 #Defining LangChain's Chroma Client 
 langchain_chroma = Chroma(
