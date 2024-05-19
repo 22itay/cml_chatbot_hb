@@ -12,10 +12,18 @@ environment_variables:
     default: ""
     description: >-
       Provide IP of Chroma DB
+  COLLECTION_NAME:
+    default: "default"
+    description: >-
+      Provide COLLECTION_NAME of Chroma DB
   HF_MODEL:
     default: "yam-peleg/Hebrew-Mistral-7B"
     description: >-
       Provide HuggingFace Model you want to use
+  HF_MODEL_PDF_PARSE:
+    default: "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    description: >-
+      Provide HuggingFace Model you want to use FOR PDFs
   HF_TOKEN:
     default: ""
     description: >-

@@ -40,6 +40,7 @@ chroma = chromadb.HttpClient(host=IP_ADDR, port=8000)
 access_token = os.environ["HF_TOKEN"]
 hugging_face_model = os.environ["HF_MODEL"]
 hugging_face_model_pdf = os.environ["HF_MODEL_PDF_PARSE"]
+vector_collection_name = os.environ["COLLECTION_NAME"]
 
 tokenizer = AutoTokenizer.from_pretrained(hugging_face_model, use_auth_token=access_token)
 
@@ -47,7 +48,7 @@ llm_model = AutoModelForCausalLM.from_pretrained(hugging_face_model, #meta-llama
                                                      load_in_4bit=True,
                                                      device_map='balanced_low_0',
                                                      torch_dtype=torch.float16,
-                                                     low_cpu_mem_usage=False,
+                                                     low_cpu_mem_usage=True,
                                                      use_auth_token=access_token
                                                     )
 max_len = 81920
@@ -79,14 +80,13 @@ def upload_file(files):
 
 
 #Embedding function which will be used to convert the text to Vector Embeddings
-#embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2") #TODO: Find replacement
 embedding_function = SentenceTransformerEmbeddings(model_name="paraphrase-multilingual-MiniLM-L12-v2")
 
 
 #Defining LangChain's Chroma Client 
 langchain_chroma = Chroma(
 client=chroma,
-collection_name="default",
+collection_name=vector_collection_name,
 embedding_function=embedding_function)
 
 #retriever = langchain_chroma.as_retriever(search_kwargs={"k": 3, "search_type" : "similarity"})
@@ -95,7 +95,7 @@ def create_default_collection():
     """
     Create Default Collection in ChromaDB if no collections exists
     """
-    chromadb.create_collection("default")
+    chromadb.create_collection(vector_collection_name)
     return "Created Default Collection"
 
 
