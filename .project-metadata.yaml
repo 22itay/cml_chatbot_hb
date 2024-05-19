@@ -28,14 +28,14 @@ runtimes:
     edition: Nvidia GPU
 
 tasks:
-  - type: run_session
-    name: Validate GPU Availibility
-    script: session-resource-validation/check_gpu_resources.py
-    short_summary: Check for GPU availibility. 
-    long_summary: Check GPUs are enabled on this workspace and are currently schedulable.
-    kernel: python3
-    cpu: 2
-    memory: 8
+  # - type: run_session
+  #   name: Validate GPU Availibility
+  #   script: session-resource-validation/check_gpu_resources.py
+  #   short_summary: Check for GPU availibility. 
+  #   long_summary: Check GPUs are enabled on this workspace and are currently schedulable.
+  #   kernel: python3
+  #   cpu: 2
+  #   memory: 8
   - type: run_session
     name: Install Dependencies
     script: session-install-deps/install_setup_tools.py
@@ -57,6 +57,13 @@ tasks:
     name: Install Dependencies
     script: session-install-deps/install_dependencies.py
     short_summary: Install Dependencies
+    kernel: python3
+    cpu: 2
+    memory: 16
+  - type: run_session
+    name: Download Huggingface Models
+    script: session-install-deps/huggingface.py
+    short_summary: Install Dependencies (Download Huggingface Models)
     kernel: python3
     cpu: 2
     memory: 16
