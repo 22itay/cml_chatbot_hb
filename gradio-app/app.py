@@ -80,7 +80,7 @@ def upload_file(files):
 
 
 #Embedding function which will be used to convert the text to Vector Embeddings
-embedding_function = SentenceTransformerEmbeddings(model_name="paraphrase-multilingual-MiniLM-L12-v2")
+embedding_function = SentenceTransformerEmbeddings(model_name=hugging_face_model_pdf)
 
 
 #Defining LangChain's Chroma Client 
