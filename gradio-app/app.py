@@ -337,7 +337,7 @@ def llm_ans(query, collection):
 
     if answer_index != -1:
       # Extract everything after 'ANSWER<<'
-      extracted_answer = result_text[answer_index + len(answer_tag):].strip()
+      extracted_answer = result_text[answer_index + len(answer_tag):]
     else:
       # Handle the case where 'ANSWER<<' is not found in the text
       extracted_answer = "Answer tag not found in the response."
